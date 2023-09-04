@@ -1,7 +1,13 @@
 package com.bigcorp.project.main.concurrent;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Utilise un ExecutorService pour lancer en parallèle 5 tâches sur
@@ -9,16 +15,28 @@ import java.util.concurrent.Executors;
  */
 public class CreateNewExecutor {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException, ExecutionException {
 
 		System.out.println("Démarrage Thread principal");
-		// Ci-dessous, ne démarre pas un Thread
-		Runnable runnable = new LongTaskRunnable();
+		
+		
+		//La préparation de mon pool de threads
 		ExecutorService executorService = Executors.newFixedThreadPool(3);
-		executorService.execute(runnable);
-		executorService.execute(runnable);
-		executorService.execute(runnable);
-		executorService.execute(runnable);
+		
+		//La préparation des mes callables
+		List<StringTaskCallable> callables = new ArrayList<>();
+		for(int i=0; i<15; i++) {
+			callables.add(new StringTaskCallable());
+		}
+		
+		//Mon pool de threads agit et traite mes Runnables
+		List<Future<String>> futures = executorService.invokeAll(callables);
+		
+		//Synchronisation des différents Threads : main récupère les résultats
+		for (Future<String> future : futures) {
+			System.out.println(future.get());
+		}
+		
 		executorService.shutdown();
 
 		System.out.println("Fin Thread principal");
@@ -36,6 +54,22 @@ public class CreateNewExecutor {
 			}
 
 			System.out.println("Fin LongTaskRunnable");
+		}
+	}
+	
+	private static final class StringTaskCallable implements Callable<String> {
+		@Override
+		public String call() {
+			System.out.println("Démarrage SringTaskCallable");
+			try {
+				Thread.sleep(2000);
+				// TimeUnit.SECONDS.sleep(5);
+			} catch (InterruptedException e) {
+				return null;
+			}
+			
+			System.out.println("Fin StringTaskCallable");
+			return LocalDateTime.now().toString();
 		}
 	}
 

@@ -10,13 +10,14 @@ public class CreateNewThread {
 		new Thread(new LongTaskRunnable()).start();
 		// Ci-dessous, ne démarre pas un Thread
 		// new LongTaskThread().run();
-		LongTaskThread longTaskThread = new LongTaskThread();
-		longTaskThread.start();
+//		LongTaskThread longTaskThread = new LongTaskThread();
+		//longTaskThread.start();
 		// longTaskThread.join();
 		System.out.println("Fin Thread principal");
 	}
 
 	private static final class LongTaskRunnable implements Runnable {
+		
 		@Override
 		public void run() {
 			System.out.println("Démarrage LongTaskRunnable");
@@ -37,7 +38,7 @@ public class CreateNewThread {
 			System.out.println("Démarrage LongTaskThread");
 			try {
 				Thread.sleep(2000);
-				// TimeUnit.SECONDS.sleep(5);
+				//TimeUnit.SECONDS.sleep(5);
 			} catch (InterruptedException e) {
 				return;
 			}

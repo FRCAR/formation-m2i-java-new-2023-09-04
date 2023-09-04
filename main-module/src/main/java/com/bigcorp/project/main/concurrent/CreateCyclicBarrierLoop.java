@@ -14,8 +14,8 @@ public class CreateCyclicBarrierLoop {
 		System.out.println("Démarrage Thread principal");
 		BarrierResetter startBarrierResetter = new BarrierResetter();
 		BarrierResetter stopBarrierResetter = new BarrierResetter();
-		CyclicBarrier startBarrier = new CyclicBarrier(6, startBarrierResetter);
-		CyclicBarrier stopBarrier = new CyclicBarrier(6, stopBarrierResetter);
+		CyclicBarrier startBarrier = new CyclicBarrier(5, startBarrierResetter);
+		CyclicBarrier stopBarrier = new CyclicBarrier(5, stopBarrierResetter);
 		while (true) {
 			new Thread(new Runner(startBarrier, stopBarrier)).start();
 			new Thread(new Runner(startBarrier, stopBarrier)).start();

@@ -43,9 +43,9 @@ public class CreateSemaphore {
 			} finally {
 				// Incrémente le compteur de this.semaphore .
 				// Ceci peut débloquer d'autres threads
+				System.out.println("Fin LongTaskRunnable");
 				this.semaphore.release();
 			}
-			System.out.println("Fin LongTaskRunnable");
 		}
 	}
 

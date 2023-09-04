@@ -21,6 +21,8 @@ public class CreateCyclicBarrier {
 		new Thread(new Runner(cyclicBarrier)).start();
 		Thread.sleep(3000);
 		new Thread(new Runner(cyclicBarrier)).start();
+		
+		new Thread(new Runner(cyclicBarrier)).start();
 		System.out.println("Fin Thread principal");
 	}
 
@@ -43,7 +45,7 @@ public class CreateCyclicBarrier {
 				//que tous les threads qui attendaient que la barrière "s'ouvre"
 				this.barrier.await();
 				System.out.println("Il court !");
-				Thread.sleep((long) (Math.random() * 10000));
+				Thread.sleep((long) (Math.random() * 10_000));
 				System.out.println("Il arrive !");
 			} catch (InterruptedException | BrokenBarrierException e) {
 				return;
