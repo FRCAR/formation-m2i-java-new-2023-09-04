@@ -22,7 +22,7 @@ public class Processes {
 		try {
 			System.out.println("Tentative de créer un process java");
 			// Crée un nouveau process et affichage de la sortie du process dans un fichier
-			ProcessBuilder processBuilder = new ProcessBuilder("java", "--version");
+			ProcessBuilder processBuilder = new ProcessBuilder("java.exe", "--version");
 			processBuilder.redirectOutput(Redirect.appendTo(new File("java-version.txt")));
 			//lance le process
 			Process p = processBuilder.start();

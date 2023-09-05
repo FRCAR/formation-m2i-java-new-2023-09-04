@@ -19,6 +19,9 @@ import java.util.Locale;
 
 public class DateAndTime {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		// Date locale actuelle
@@ -48,14 +51,19 @@ public class DateAndTime {
 
 		// Trouver le nombre de jours entre le dernier mercredi et aujourd'hui
 		LocalDate dernierMercredi = now.with(TemporalAdjusters.previous(DayOfWeek.WEDNESDAY));
-		Period.between(dernierMercredi, now).getDays();
+		int days = Period.between(dernierMercredi, now).getDays();
+		System.out.println("Nombre de jours entre le dernier mercredi et aujourd'hui : " + days);
 
 		// Trouver le nombre de secondes entre deux dateTimes
-		System.out.println(Duration.between(LocalDateTime.of(2000, 1, 1, 12, 30), LocalDateTime.now()).toSeconds());
+		Duration duration = Duration.between(LocalDateTime.of(2000, 1, 1, 12, 30), LocalDateTime.now());
+		System.out.println(duration.toSeconds());
 
 		// D'une date du calendrier grégorien à une date japonaise
-		LocalDateTime occidentalDate = LocalDateTime.of(2013, 01, 20, 19, 30);
+		LocalDateTime occidentalDate = LocalDateTime.of(1902, 01, 20, 19, 30);
 		JapaneseDate japaneseDate = JapaneseDate.from(occidentalDate);
+		System.out.println(japaneseDate);
+		
+		
 		LocalDate.from(japaneseDate);
 
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM d yyyy  HH:mm");
