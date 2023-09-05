@@ -9,13 +9,15 @@ import java.lang.ProcessBuilder.Redirect;
  */
 public class Processes {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		
 		// Itère sur tous les processes
 		for (ProcessHandle p : ProcessHandle.allProcesses().toList()) {
 			afficheProcess(p);
-			if (p.info().command().orElse("").endsWith("jshell.exe")) {
+			if (p.info().command().orElse("").equals("C:\\Windows\\explorer.exe")) {
 				//Détruit un process
-				p.destroy();
+				boolean isDestroyed = p.destroy();
+				System.out.println("Processus détruit ?  " + isDestroyed);
 			}
 		}
 
@@ -27,11 +29,13 @@ public class Processes {
 			//lance le process
 			Process p = processBuilder.start();
 			afficheProcess(p.toHandle());
+			Thread.sleep(3_000);
 			//L'arrête
 			p.destroy();
 		} catch (IOException e) {
 			System.out.println("Impossible de créer la commande");
 		}
+		
 	}
 
 	/**
@@ -39,8 +43,9 @@ public class Processes {
 	 * @param p
 	 */
 	private static void afficheProcess(ProcessHandle p) {
-		System.out.println(String.format("Le process avec l'id %1$s a été lancé avec la commmande %2$s", p.pid(), p
-				.info().command().orElse("pas de commande")));
+		System.out.println(String.format("Le process avec l'id %1$s a été lancé avec la commmande %2$s", 
+				p.pid(), 
+				p.info().command().orElse("pas de commande")));
 	}
 
 }

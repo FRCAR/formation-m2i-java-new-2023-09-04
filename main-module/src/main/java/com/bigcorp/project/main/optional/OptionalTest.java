@@ -40,15 +40,17 @@ public class OptionalTest {
 		if (totemRogerDupont.isPresent()) {
 			System.out.println("L'animal totem de roger dupont est : " + totemRogerDupont.get());
 		}
-		
-		System.out.println("L'animal totem de roger poupou est : " + optionalTest.trouveAnimalTotem("roger", "poupou").orElse("inconnu"));
-		
-		optionalTest.trouveAnimalTotem("regis", "poupou").ifPresent(s -> System.out.println("L'animal totem de roger dupont est : " + s));
+
+		System.out.println("L'animal totem de roger poupou est : "
+				+ optionalTest.trouveAnimalTotem("roger", "poupou").orElse("inconnu"));
+
+		optionalTest.trouveAnimalTotem("regis", "poupou")
+				.ifPresent(s -> System.out.println("L'animal totem de roger dupont est : " + s));
 
 		String prenom = "regis";
-		System.out.println("L'animal totem de regis poulet est : " + optionalTest.trouveAnimalTotem(prenom, "poulet").orElseGet(() -> "L'animal de " + prenom));
-		
-		
+		System.out.println("L'animal totem de regis poulet est : "
+				+ optionalTest.trouveAnimalTotem(prenom, "poulet").orElseGet(() -> "je sais pas" ));
+
 	}
 
 	/**
