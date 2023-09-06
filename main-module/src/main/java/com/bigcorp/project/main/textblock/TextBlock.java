@@ -27,7 +27,7 @@ public class TextBlock {
 		// Introduit un décalage : le nombre d'espaces entre la ligne 1 et la ligne 2
 		String decalage = """
 						Hé bonjour, comment allez-vous ?
-					""";
+						""";
 		System.out.println(decalage);
 
 		// Nouvelle méthode formatted

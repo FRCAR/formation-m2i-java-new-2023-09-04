@@ -7,7 +7,7 @@ public class TheInstanceOf {
 
 	public static void main(String[] args) {
 
-		Meuble meuble = new Meuble();
+		Meuble meuble = new Table();
 
 		// instanceof, cast et création d'une nouvelle variable en une ligne
 		if (meuble instanceof Chaise c) {
@@ -26,7 +26,7 @@ public class TheInstanceOf {
 		if (meuble instanceof Table t && t.places > 3) {
 			System.out.println("La table a " + t.places + " places.");
 		}
-		System.out.println("La chaise a " + c.pieds + " pieds.");
+		
 
 	}
 }
