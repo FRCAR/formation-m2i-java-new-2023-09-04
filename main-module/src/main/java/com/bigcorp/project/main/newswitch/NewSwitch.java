@@ -11,15 +11,13 @@ public class NewSwitch {
 
 	public static void main(String[] args) {
 
-		//Ancien switch
+		// Ancien switch
 		Etat etat = Etat.ARRETE;
 		switch (etat) {
 		case ARRETE:
 			double vitesse = 0;
 			break;
 		case DEMARRE:
-			vitesse = 1;
-			break;
 		case EN_PAUSE:
 			vitesse = 0;
 			break;
@@ -27,23 +25,25 @@ public class NewSwitch {
 			vitesse = 2;
 			System.out.println("La vitesse vaut : " + vitesse);
 			break;
+		default:
+			System.out.println("Je ne sais pas ce que vaut la vitesse");
 		}
 
-		//Nouveau switch
-		switch (etat) {
+		// Nouveau switch
+		long valeurSwitch = switch (etat) {
 		case ARRETE -> {
 			System.out.println("Arret");
+			yield 0;
 		}
+		case DEMARRE -> { yield 1;}
 		case AVANCE_RAPIDE -> {
 			System.out.println("Avance rapide");
+			yield 2;
 		}
-		default -> {
-			System.out.println("Aucune action");
-		}
-		}
+		case EN_PAUSE -> 0;
+		};
 
-		
-		//Switch renvoyant une valeur : une instruction, d'où le ; à la fin.
+		// Switch renvoyant une valeur : une instruction, d'où le ; à la fin.
 		int j = switch (etat) {
 		case ARRETE -> 0;
 		case DEMARRE -> 1;

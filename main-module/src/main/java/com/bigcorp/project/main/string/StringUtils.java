@@ -6,7 +6,7 @@ public class StringUtils {
 		String multilineString = "Voilà mon conseil : \n \n découper ses phrases \n en lignes.";
 
 		// Crée un stream pour chaque ligne de multilineString
-		multilineString.lines().forEach(System.out::println);
+		multilineString.lines().forEach(s -> System.out.println("préfixe " + s ));
 
 		// Un caractère blanc de la taille du M majuscule
 		char emSpace = '\u2003';
@@ -35,6 +35,11 @@ public class StringUtils {
 		var sbuf2 = new StringBuffer().append("coucou".repeat(2));
 		System.out.println("La comparaison sbuf1,sbuf2 donne " + sbuf1.compareTo(sbuf2));
 
+		String s1 = "lkjklj";
+		String s2 = s1;
+		String coucou = s2 + s2;
+		String coucou2 = new StringBuilder(s1).append(s2).toString();
+		
 	}
 
 }

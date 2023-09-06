@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.BiFunction;
 
 public class LocalInference {
 
@@ -65,21 +66,23 @@ public class LocalInference {
 		}
 
 		// Fonctionne depuis Java 11
-		//BiFunction<Integer, Integer, Integer> addition = (var x, var y) -> x + y;
+		BiFunction<Integer, Integer, Integer> addition3 = (Integer x, Integer y) -> x + y;
+		BiFunction<Integer, Integer, Integer> addition = (var x, var y) -> x + y;
 		// Ne fonctionne pas
+		//BiFunction<Integer, Integer, Integer> addition3 = (x, y) -> x + y;
 		//BiFunction<Integer, Integer, Integer> addition2 = (var x, y) -> x + y;
 		//BiFunction<Integer, Integer, Integer> addition3 = (var x, int y) -> x + y;
 
 	}
 
 	// Ne fonctionne pas
-	// public var maMethode1() {
-	// return 3;
-	// }
+//	 public var maMethode1() {
+//		 return 3;
+//	 }
 
-	//	public void maMethode2(var string) {
-	//		System.out.println(string);
-	//	}
+//		public void maMethode2(var string) {
+//			System.out.println(string);
+//		}
 
 }
 
