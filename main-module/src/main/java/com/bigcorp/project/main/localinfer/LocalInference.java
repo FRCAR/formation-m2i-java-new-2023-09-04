@@ -10,10 +10,10 @@ public class LocalInference {
 
 	public static void main(String[] args) {
 		var compteur = 5;
-		System.out.println("Le résultat de l'addition vaut " + 5 + compteur);
+		System.out.println("Le résultat de l'addition vaut " + (5 + compteur));
 		var localInference = new LocalInference();
 		// La ligne ci-dessous ne compile pas
-		// compteur = "6";
+		//var compteur = "6";
 		
 		var monSet = Set.of(1,2);
 
@@ -24,21 +24,22 @@ public class LocalInference {
 		var monArgent = new Argent();
 		// La ligne ci-dessous ne compile pas : le type par défaut est celui de la
 		// classe
-		// monArgent = new Or();
+		//monArgent = new Or();
 
 		// En explicitant le type parent, cela fonctionne
 		Metal monMetal2 = new Argent();
 		monMetal2 = new Or();
 
 		// Ne fonctionne pas
-		// var x;
+		//var x;
 		// x = 3;
-		// var maVariableNull = null;
+		//var maVariableNull = null;
 
-		// var maLambda = () -> {}
+		// var maLambda = () -> {};
 
 		// Fonctionne ...
 		var<Object> list = new ArrayList<>();
+		
 		// ... mais crée une liste d'objets ...
 		list.add(new Object());
 

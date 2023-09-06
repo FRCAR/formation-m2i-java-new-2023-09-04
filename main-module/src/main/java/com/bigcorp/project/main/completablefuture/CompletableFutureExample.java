@@ -1,5 +1,7 @@
 package com.bigcorp.project.main.completablefuture;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -34,9 +36,9 @@ public class CompletableFutureExample {
 
 		CompletableFutureExample cfe = new CompletableFutureExample();
 
-		cfe.runCompletableFutureWithJoin();
-		cfe.runCompletableFutureWithThenRun();
-		cfe.runCompletableFutureWithCompose();
+		//cfe.runCompletableFutureWithJoin();
+//		cfe.runCompletableFutureWithThenRun();
+//		cfe.runCompletableFutureWithCompose();
 		cfe.runCompletableFutureWithAll();
 	}
 
@@ -121,7 +123,8 @@ public class CompletableFutureExample {
 
 		CompletableFuture.allOf(computeInteger(newFixedThreadPool),
 				computeInteger(3, newFixedThreadPool),
-				computeBoolean(2000, newFixedThreadPool)).thenRun(() -> {
+				computeBoolean(2000, newFixedThreadPool))
+		.thenRun(() -> {
 					System.out.println("Tous les CompletableFuture de allOf sont finis");
 				});
 
@@ -141,6 +144,8 @@ public class CompletableFutureExample {
 		System.out.println("Le Thread main continue ... ");
 		System.out.println("Le Thread main est fini ... ");
 		newFixedThreadPool.shutdown();
+		
+		
 	}
 
 }

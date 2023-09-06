@@ -7,9 +7,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class Bouga {
+import javax.print.attribute.HashAttributeSet;
+
+public class HttpClientMain {
 
 	public static void main(String[] args) {
 		try {
@@ -34,5 +39,8 @@ public class Bouga {
 		} catch (Exception e) {
 			System.out.println("Exception" + e);
 		}
+		
 	}
 }
+	
+	
